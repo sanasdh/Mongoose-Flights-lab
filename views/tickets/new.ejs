@@ -1,0 +1,22 @@
+<%- include("../partials/header") %>
+
+
+<h3>Tickets for flight <%= flight.airline%>-<%= flight.flightNo %>, Airport: <%= flight.airport%>, </h3>
+<form action="/flights/<%= flight._id %>/tickets/new" method="POST">
+<label>Seat:</label>
+<input name="seat" required placeholder="From A1 to F9" pattern="[A-F][1-9]\d?">
+<label>Price: </label>
+<input type="number" name="price" min="0">
+<input type="submit" value="Add Ticket">
+</form>
+
+<ul>
+  <% tickets.forEach(function(t) { %>
+    <li> Seat:<%= t.seat %> , $<%= t.price %>
+    </li>
+  <% }) %>
+</ul>
+</main>
+</body>
+
+</html>
